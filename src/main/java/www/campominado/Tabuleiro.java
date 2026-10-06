@@ -149,4 +149,16 @@ public class Tabuleiro {
             }
         }
     }
+
+    public boolean verificarVitoria(){
+        for (int li = 0; li < linhas; li++) {
+            for (int co = 0; co < colunas; co++) {
+                Celula celula = matriz[li][co];
+                if (!celula.isTemBomba() && !celula.isRevelada()){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
