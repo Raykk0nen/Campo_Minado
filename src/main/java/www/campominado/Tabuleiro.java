@@ -161,4 +161,26 @@ public class Tabuleiro {
         }
         return true;
     }
+
+    public void exeibir(){
+        System.out.print("    ");
+        for (int co = 0; co < colunas; co++) {
+            System.out.printf("%2d ",co);
+        }
+        System.out.println();
+
+        for (int li = 0; li < linhas; li++) {
+            for (int co = 0; co < colunas; co++) {
+                System.out.print("[" + matriz[li][co].getSimbolos() + "]");
+            }
+            System.out.println();
+        }
+    }
+
+    public int getLinhas(){
+        return linhas;
+    }
+    public int getColunas(){
+        return colunas;
+    }
 }
