@@ -79,4 +79,74 @@ public class Tabuleiro {
             }
         }
     }
+
+    public boolean executarAcao(int li, int co, Acao acao){
+        //Este if irá garantir que as escolhas do jogador sejam válidas.
+        if (li < 0 || li >=linhas || co < 0 || co >= colunas){
+            System.out.println("Posição inválida! Escolha dentro dos limites.");
+            return true;
+        }
+
+        Celula celula = matriz[li][co];
+        //Este if fará com que o jogador marque ou desmarque uma célula.
+        if (acao == Acao.MARCAR || acao == Acao.DESMARCAR){
+            celula.alterarMarcacao();
+            return true;
+        }
+        //Este if permitirá que o jogador consiga cavar qualquer célula válida.
+        if (acao == Acao.CAVAR){
+            //Este if irá garantir que o jogador não cave uma célula marcada.
+            if (celula.isMarcada() || celula.isRevelada()){
+                return true;
+            }
+
+            if (!bombasGeradas){
+                gerarBombas(li, co);
+            }
+            //Este if fará que quando o jogador cave um bomba, todas sejam reveladas.
+            if (celula.isTemBomba()){
+                celula.revelar();
+                revelarTodasAsBombas();
+                return false;
+            }
+
+            revelarEmCadeia(li, co);
+        }
+
+        return true;
+    }
+
+    private void revelarEmCadeia(int li, int co){
+        if (li < 0 || li >=linhas || co < 0 || co >= colunas) {
+            return;
+        }
+
+        Celula celula = matriz[li][co];
+
+        if (celula.isRevelada() || celula.isMarcada()){
+            return;
+        }
+
+        celula.revelar();
+
+        if (celula.getBombasVizinhas() == 0 && !celula.isTemBomba()){
+            for (int dl = -1; dl <= 1; dl++) {
+                for (int dc = -1; dc <= 1; dc++) {
+                    if (dl != 0 || dc != 0){
+                        revelarEmCadeia(li + dl, co + dc);
+                    }
+                }
+            }
+        }
+    }
+
+    private void revelarTodasAsBombas(){
+        for (int li = 0; li < linhas; li++) {
+            for (int co = 0; co < colunas; co++) {
+                if (matriz[li][co].isTemBomba()){
+                    matriz[li][co].revelar();
+                }
+            }
+        }
+    }
 }
