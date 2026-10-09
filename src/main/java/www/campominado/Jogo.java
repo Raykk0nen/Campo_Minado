@@ -30,8 +30,9 @@ public class Jogo {
                 default -> null;
             };
 
-            if (acao != null) {
+            if (acao == null) {
                 System.out.println("opção inválida! Tente novamente.\n");
+                continue;
             }
 
             System.out.print("Digite a Linha: ");

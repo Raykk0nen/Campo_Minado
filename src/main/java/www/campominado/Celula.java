@@ -27,7 +27,7 @@ public class Celula {
         if (this.marcada) {
             return "⚐"; //Se tiver marcada -> Mostra "⚐"
         }
-        if (this.revelada) {
+        if (!this.revelada) {
             return "◼"; //Se ainda não foi cavada -> Mostra "◼"
         }
         if (this.temBomba) {
