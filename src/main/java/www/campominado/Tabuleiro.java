@@ -23,6 +23,9 @@ public class Tabuleiro {
     //Trava se segurança do jogo.
     private boolean bombasGeradas;
 
+    //
+    private static final int larguraConsole = 180;
+
     //Construtor
     public Tabuleiro(Dificuldade dificuldade){
 
