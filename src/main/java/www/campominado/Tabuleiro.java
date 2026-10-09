@@ -343,31 +343,79 @@ public class Tabuleiro {
     //Exibe o tabuleiro no terminal.
     public void exeibir(){
 
-        /*
-         * Imprime alguns espaços para separar os números
-         * das colunas da primeira linha do tabuleiro.
-         */
-        System.out.print("    ");
+        //Define o espaço necessário para exibir os números das linhas.
+        int larguraIndece = Math.max(
+                4, String.valueOf(linhas -1).length() + 2
+        );
 
-        //Percorre as colunas para mostrar seus números.
+        //Cada célula terá uma largura fixa para manter o alinhamento.
+        int larguraCelula = Math.max(
+                5, String.valueOf(colunas -1).length() + 2
+        );
+
+        //Calcula a largura total ocupada pelo tabuleiro.
+        int larguraTabuleiro = larguraIndece + (larguraCelula * colunas);
+
+        //Calcula o espaço à esquerda para centralizar o tabuleiro.
+        int quantidadeEspacos = Math.max(
+                0, (larguraConsole - larguraTabuleiro) / 2
+        );
+
+        String margem = " ".repeat(quantidadeEspacos);
+
+        //Imprime o espaço reservado para os números das linhas.
+        System.out.print(margem + " ".repeat(larguraIndece));
+
+        //Imprime os números das colunas, centralizados em cada célula.
         for (int co = 0; co < colunas; co++) {
-            System.out.printf("%2d ",co);
+
+            String numero = String.valueOf(co);
+
+            int espacosAntes = (larguraCelula - numero.length()) / 2;
+
+            int espacosDepois = larguraCelula - numero.length();
+
+            System.out.print(
+                    " ".repeat(espacosAntes)
+                    + numero
+                    + " ".repeat(espacosDepois)
+            );
         }
 
-        //Pula para a próxima linha.
+        //Finaliza a linha dos números das colunas.
         System.out.println();
 
         //Percorre todas as linhas do tabuleiro.
         for (int li = 0; li < linhas; li++) {
 
-            //Para cada linha, percorre todas as colunas.
-            for (int co = 0; co < colunas; co++) {
-                System.out.print("[" + matriz[li][co].getSimbolos() + "]");
-            }
 
-            //pulamos para a próxima linha.
-            System.out.println();
+            //Imprime o número da linha antes das células.
+            System.out.println(margem + String.format(
+                    "%" + (larguraIndece - 2) + "d  ", li
+            ));
+
+            //Percorre todas as colunas da linha atual.
+            for (int co = 0; co < colunas; co++) {
+
+                //Obtém o símbolo atual da célula.
+                String simbolo =
+                        "[" + matriz[li][co].getSimbolos() + "]";
+
+                //Calcula o espaço necessário para centralizar o símbolo.
+                int espacosRestantes = larguraCelula - simbolo.length();
+
+                int espacosAntes = espacosRestantes / 2;
+                int espacosDepois = espacosRestantes - espacosAntes;
+
+                //Exibe a célula com largura e alinhamento fixos.
+                System.out.print(
+                        " ".repeat(espacosAntes)
+                                + simbolo
+                                + " ".repeat(espacosDepois)
+                );
+            }
         }
+        System.out.println();
     }
 
     public int getLinhas(){
