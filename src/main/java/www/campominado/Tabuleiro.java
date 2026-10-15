@@ -24,7 +24,7 @@ public class Tabuleiro {
     private boolean bombasGeradas;
 
     //
-    private static final int larguraConsole = 180;
+    private static final int larguraConsole = 120;
 
     //Construtor
     public Tabuleiro(Dificuldade dificuldade){
@@ -350,7 +350,7 @@ public class Tabuleiro {
 
         //Cada célula terá uma largura fixa para manter o alinhamento.
         int larguraCelula = Math.max(
-                5, String.valueOf(colunas -1).length() + 2
+                4, String.valueOf(colunas -1).length() + 2
         );
 
         //Calcula a largura total ocupada pelo tabuleiro.
@@ -373,7 +373,7 @@ public class Tabuleiro {
 
             int espacosAntes = (larguraCelula - numero.length()) / 2;
 
-            int espacosDepois = larguraCelula - numero.length();
+            int espacosDepois = larguraCelula - numero.length() - espacosAntes;
 
             System.out.print(
                     " ".repeat(espacosAntes)
@@ -390,7 +390,7 @@ public class Tabuleiro {
 
 
             //Imprime o número da linha antes das células.
-            System.out.println(margem + String.format(
+            System.out.print(margem + String.format(
                     "%" + (larguraIndece - 2) + "d  ", li
             ));
 
@@ -414,8 +414,8 @@ public class Tabuleiro {
                                 + " ".repeat(espacosDepois)
                 );
             }
+            System.out.println();
         }
-        System.out.println();
     }
 
     public int getLinhas(){
