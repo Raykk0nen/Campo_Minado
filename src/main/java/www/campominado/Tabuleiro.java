@@ -94,6 +94,7 @@ public class Tabuleiro {
             }
         }
 
+        //Garante que não seja geradas bombas durante a partida.
         this.bombasGeradas = true;
 
         //Chama a contagem assim que terminar de colocar as bombas
