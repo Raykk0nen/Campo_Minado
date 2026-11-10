@@ -1,6 +1,6 @@
 package www.campominado;
 
-//teste 3
+//Enum é um tipo de class que utilizado para definir valores fixos
 public enum Dificuldade {
     INICIANTE (9, 9, 10, true),
     INTERMEDIARIO (16, 16, 40, true),
