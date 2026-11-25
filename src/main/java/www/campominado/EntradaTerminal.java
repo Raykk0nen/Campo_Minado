@@ -3,7 +3,7 @@ package www.campominado;
 import java.util.Scanner;
 
 public class EntradaTerminal {
-    private Acao escolherAcao(Scanner sc) {
+    public Acao escolherAcao(Scanner sc) {
         System.out.println("\nEscolha uma Ação:");
         System.out.println("1 - Cavar\n2 - Marcar Bomba\n3 - Desmarcar Bomba");
         System.out.print("Opção: ");

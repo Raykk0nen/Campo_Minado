@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Jogo {
     public void iniciar() {
         Scanner sc = new Scanner(System.in);
+        EntradaTerminal entrada = new EntradaTerminal();
 
         System.out.println("==================================");
         System.out.println("    BEM-VINDO AO CAMPO MINADO!    ");
@@ -18,7 +19,7 @@ public class Jogo {
         while (jogoRodando) {
             tabuleiro.exeibir();
 
-            Acao acao = escolherAcao(sc);
+            Acao acao = entrada.escolherAcao(sc);
 
             if (acao == null) {
                 System.out.println("opção inválida! Tente novamente.\n");
