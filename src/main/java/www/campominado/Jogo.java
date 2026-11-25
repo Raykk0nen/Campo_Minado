@@ -18,7 +18,7 @@ public class Jogo {
         while (jogoRodando) {
             tabuleiro.exeibir();
 
-
+            Acao acao = escolherAcao(sc);
 
             if (acao == null) {
                 System.out.println("opção inválida! Tente novamente.\n");
