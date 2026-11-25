@@ -7,11 +7,7 @@ public class Jogo {
         Scanner sc = new Scanner(System.in);
         EntradaTerminal entrada = new EntradaTerminal();
 
-        System.out.println("==================================");
-        System.out.println("    BEM-VINDO AO CAMPO MINADO!    ");
-        System.out.println("==================================");
-
-        Dificuldade dificuldade = escolherDificuldade(sc);
+        Dificuldade dificuldade = entrada.escolherDificuldade(sc);
         Tabuleiro tabuleiro = new Tabuleiro(dificuldade);
 
         boolean jogoRodando = true;
@@ -47,23 +43,5 @@ public class Jogo {
             }
         }
         sc.close();
-    }
-
-    private Dificuldade escolherDificuldade(Scanner sc) {
-        while (true) {
-            System.out.println("\nEscolha a Dificulade:");
-            System.out.println("1 - Iniciante\n2 - Intermediário\n3 - Avançado\n4 - Mega-Brain\n5 - Tung-Tung-God");
-            System.out.print("Opcao: ");
-            int opcao = sc.nextInt();
-
-            switch (opcao) {
-                case 1: return Dificuldade.INICIANTE;
-                case 2: return Dificuldade.INTERMEDIARIO;
-                case 3: return Dificuldade.AVANCADO;
-                case 4: return Dificuldade.MEGA_BRAIN;
-                case 5: return Dificuldade.TUNG_TUNG_GOD;
-                default: System.out.println("Opção inválida.");;
-            }
-        }
     }
 }
