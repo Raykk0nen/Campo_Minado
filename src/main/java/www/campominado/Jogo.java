@@ -22,11 +22,8 @@ public class Jogo {
                 continue;
             }
 
-            System.out.print("Digite a Linha: ");
-            int linha = sc.nextInt();
-
-            System.out.print("Digite a Coluna: ");
-            int coluna = sc.nextInt();
+            int linha = entrada.lerLinha(sc);
+            int coluna = entrada.lerColuna(sc);
 
             jogoRodando = tabuleiro.executarAcao(linha, coluna, acao);
 

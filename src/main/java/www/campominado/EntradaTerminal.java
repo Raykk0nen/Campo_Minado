@@ -35,4 +35,13 @@ public class EntradaTerminal {
             }
         }
     }
+
+    public int lerLinha(Scanner sc) {
+        System.out.print("Digite a Linha: ");
+        return sc.nextInt();
+    }
+    public int lerColuna(Scanner sc) {
+        System.out.print("Digite a Coluna: ");
+        return sc.nextInt();
+    }
 }
