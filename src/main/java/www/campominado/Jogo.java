@@ -1,13 +1,10 @@
 package www.campominado;
 
-import java.util.Scanner;
-
 public class Jogo {
     public void iniciar() {
-        Scanner sc = new Scanner(System.in);
         EntradaTerminal entrada = new EntradaTerminal();
 
-        Dificuldade dificuldade = entrada.escolherDificuldade(sc);
+        Dificuldade dificuldade = entrada.escolherDificuldade();
         Tabuleiro tabuleiro = new Tabuleiro(dificuldade);
 
         boolean jogoRodando = true;
@@ -15,15 +12,15 @@ public class Jogo {
         while (jogoRodando) {
             tabuleiro.exeibir();
 
-            Acao acao = entrada.escolherAcao(sc);
+            Acao acao = entrada.escolherAcao();
 
             if (acao == null) {
                 System.out.println("opção inválida! Tente novamente.\n");
                 continue;
             }
 
-            int linha = entrada.lerLinha(sc);
-            int coluna = entrada.lerColuna(sc);
+            int linha = entrada.lerLinha();
+            int coluna = entrada.lerColuna();
 
             jogoRodando = tabuleiro.executarAcao(linha, coluna, acao);
 
@@ -39,6 +36,6 @@ public class Jogo {
                 break;
             }
         }
-        sc.close();
+        entrada.fechar();
     }
 }
