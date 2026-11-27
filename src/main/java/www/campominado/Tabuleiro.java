@@ -193,7 +193,7 @@ public class Tabuleiro {
 
         //Este if fará com que o jogador marque ou desmarque uma célula.
         if (acao == Acao.MARCAR || acao == Acao.DESMARCAR){
-            celula.alterarMarcacao();
+            celula.definirMarcacao(acao == Acao.MARCAR);
             return true;
         }
 

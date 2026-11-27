@@ -12,14 +12,13 @@ public class Celula {
         this.marcada = false; //Garante que nasce sem bandeira.
         this.bombasVizinhas = 0; //Começa a contagem de vizinhos zerada.
     }
-    //void -> significa que o metodo executa uma ação, mas não devolve nenhum valor.
     public void revelar() {
         this.revelada = true;
     }
-    public void alterarMarcacao() {
-        //Este if significa que só podemos marcar/desmarcar se a célula não estiver revelada ainda.
+
+    public void definirMarcacao(boolean marcada) {
         if (!this.revelada) {
-            this.marcada = !this.marcada; //Inverte o estado atual. Se era false, vira true. Se era true, vira false.
+            this.marcada = marcada;
         }
     }
 
