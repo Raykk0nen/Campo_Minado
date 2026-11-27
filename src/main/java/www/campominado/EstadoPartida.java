@@ -1,4 +1,7 @@
 package www.campominado;
 
-public class EstadoPartida {
+public enum EstadoPartida {
+    EM_ANDAMENTO,
+    VITORIA,
+    DERROTA
 }
