@@ -5,7 +5,7 @@ package www.campominado;
 public class
 Main {
     static void main() {
-        Jogo jogo = new Jogo();
-        jogo.iniciar();
+        JogoTerminal jogoTerminal = new JogoTerminal();
+        jogoTerminal.iniciar();
     }
 }
